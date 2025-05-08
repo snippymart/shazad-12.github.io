@@ -44,20 +44,18 @@
       data-presets="typescript,react"
       data-type="module"
     >
-      import * as React from 'https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js';
-      import { motion, AnimatePresence } from 'https://cdn.jsdelivr.net/npm/framer-motion@10.12.16/dist/framer-motion.js';
+      import * as React from "https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js";
+      import {
+        motion,
+        AnimatePresence,
+      } from "https://cdn.jsdelivr.net/npm/framer-motion@10.12.16/dist/framer-motion.js";
 
-      type Section = 'skills' | 'portfolio' | 'blog' | 'contact';
+      type Section = "skills" | "portfolio" | "blog" | "contact";
 
-      interface Project {
-        title: string;
-        description: string;
-      }
+      const App = () => {
+        const [activeSection, setActiveSection] = React.useState("skills");
 
-      const App: React.FC = () => {
-        const [activeSection, setActiveSection] = React.useState<Section>('skills');
-
-        const sections: Record<Section, JSX.Element> = {
+        const sections = {
           skills: (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -68,8 +66,17 @@
             >
               <h2 className="text-2xl font-bold mb-4">Skills</h2>
               <ul className="grid grid-cols-2 gap-4">
-                {['Python', 'HTML', 'CSS', 'JavaScript', 'TypeScript', 'React'].map((skill: string) => (
-                  <li key={skill} className="bg-teal-500/20 p-3 rounded-lg">{skill}</li>
+                {[
+                  "Python",
+                  "HTML",
+                  "CSS",
+                  "JavaScript",
+                  "TypeScript",
+                  "React",
+                ].map((skill) => (
+                  <li key={skill} className="bg-teal-500/20 p-3 rounded-lg">
+                    {skill}
+                  </li>
                 ))}
               </ul>
             </motion.div>
@@ -85,9 +92,15 @@
               <h2 className="text-2xl font-bold mb-4">Portfolio</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {[
-                  { title: 'Starstrike Game', description: 'A 2D space shooter built with HTML5 Canvas' },
-                  { title: 'SmartNotes App', description: 'A note-taking app with voice-to-text' },
-                ].map((project: Project) => (
+                  {
+                    title: "Starstrike Game",
+                    description: "A 2D space shooter built with HTML5 Canvas",
+                  },
+                  {
+                    title: "SmartNotes App",
+                    description: "A note-taking app with voice-to-text",
+                  },
+                ].map((project) => (
                   <div key={project.title} className="glass p-4 rounded-lg">
                     <h3 className="text-lg font-semibold">{project.title}</h3>
                     <p>{project.description}</p>
@@ -107,7 +120,9 @@
               <h2 className="text-2xl font-bold mb-4">Blog</h2>
               <div className="space-y-4">
                 <div className="glass p-4 rounded-lg">
-                  <h3 className="text-lg font-semibold">Mastering TypeScript with React</h3>
+                  <h3 className="text-lg font-semibold">
+                    Mastering TypeScript with React
+                  </h3>
                   <p>Building type-safe, scalable web applications.</p>
                 </div>
               </div>
@@ -135,12 +150,14 @@
               <div className="container flex justify-between items-center py-4">
                 <h1 className="text-xl font-bold">Shazad Arshad</h1>
                 <ul className="flex space-x-6">
-                  {['Skills', 'Portfolio', 'Blog', 'Contact'].map((item: string) => (
+                  {["Skills", "Portfolio", "Blog", "Contact"].map((item) => (
                     <li key={item}>
                       <button
                         onClick={() => setActiveSection(item.toLowerCase())}
                         className={`text-white hover:text-teal-300 transition-colors ${
-                          activeSection === item.toLowerCase() ? 'text-teal-300' : ''
+                          activeSection === item.toLowerCase()
+                            ? "text-teal-300"
+                            : ""
                         }`}
                       >
                         {item}
@@ -166,7 +183,9 @@
 
               {/* Content Sections */}
               <div className="content md:w-2/3 glass p-6 rounded-lg">
-                <AnimatePresence mode="wait">{sections[activeSection]}</AnimatePresence>
+                <AnimatePresence mode="wait">
+                  {sections[activeSection]}
+                </AnimatePresence>
               </div>
             </div>
 
@@ -176,10 +195,17 @@
                 <p>© 2025 Shazad Arshad</p>
                 <ul className="flex space-x-4">
                   <li>
-                    <a href="#about" className="text-white hover:text-teal-300">About</a>
+                    <a href="#about" className="text-white hover:text-teal-300">
+                      About
+                    </a>
                   </li>
                   <li>
-                    <a href="#contact" className="text-white hover:text-teal-300">Contact</a>
+                    <a
+                      href="#contact"
+                      className="text-white hover:text-teal-300"
+                    >
+                      Contact
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -188,7 +214,7 @@
         );
       };
 
-      const root = ReactDOM.createRoot(document.getElementById('root')!);
+      const root = ReactDOM.createRoot(document.getElementById("root"));
       root.render(<App />);
     </script>
   </body>
