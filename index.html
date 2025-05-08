@@ -138,7 +138,7 @@
                   {['Skills', 'Portfolio', 'Blog', 'Contact'].map((item: string) => (
                     <li key={item}>
                       <button
-                        onClick={() => setActiveSection(item.toLowerCase() as Section)}
+                        onClick={() => setActiveSection(item.toLowerCase())}
                         className={`text-white hover:text-teal-300 transition-colors ${
                           activeSection === item.toLowerCase() ? 'text-teal-300' : ''
                         }`}
