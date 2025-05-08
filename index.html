@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.22.9/babel.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/framer-motion@10.12.16/dist/es/framer-motion.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/framer-motion@10.12.16/dist/framer-motion.js"></script>
     <style>
       body {
         margin: 0;
@@ -45,10 +45,7 @@
       data-type="module"
     >
       import * as React from "https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js";
-      import {
-        motion,
-        AnimatePresence,
-      } from "https://cdn.jsdelivr.net/npm/framer-motion@10.12.16/dist/es/framer-motion.js";
+      import { motion } from "https://cdn.jsdelivr.net/npm/framer-motion@10.12.16/dist/framer-motion.js";
 
       type Section = "skills" | "portfolio" | "blog" | "contact";
 
@@ -183,9 +180,15 @@
 
               {/* Content Sections */}
               <div className="content md:w-2/3 glass p-6 rounded-lg">
-                <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeSection}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5 }}
+                >
                   {sections[activeSection]}
-                </AnimatePresence>
+                </motion.div>
               </div>
             </div>
 
