@@ -135,7 +135,7 @@
               <div className="container flex justify-between items-center py-4">
                 <h1 className="text-xl font-bold">Shazad Arshad</h1>
                 <ul className="flex space-x-6">
-                  {(['Skills', 'Portfolio', 'Blog', 'Contact'] as const).map((item) => (
+                  {['Skills', 'Portfolio', 'Blog', 'Contact'].map((item: string) => (
                     <li key={item}>
                       <button
                         onClick={() => setActiveSection(item.toLowerCase() as Section)}
